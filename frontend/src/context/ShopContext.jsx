@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
-import { products } from "../assets/assets";
+
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 
@@ -9,9 +9,11 @@ export const ShopContext = createContext();
 const ShopContextProvider = ({ children }) => {
   const currency = "₹";
   const delivery_fee = 10;
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [search, setSearch] = useState("");
   const [cartItems, setCartItems] = useState({});
   const [showSearch, setShowSearch] = useState(true);
+  const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
   const addToCart = async(itemId,size)=>{
@@ -81,7 +83,13 @@ const ShopContextProvider = ({ children }) => {
   return totalAmount;
 }
 
-
+const getProductsDtata = async () => {
+  try{
+    
+  }catch(error){
+    console.log(error);
+  }
+}
 
 
   const value = {
@@ -97,7 +105,11 @@ const ShopContextProvider = ({ children }) => {
     getCartCount,
     updateQuantity,
     getCartAmount,
-    navigate
+    navigate,
+    backendUrl
+    
+    
+
 
     };
 
