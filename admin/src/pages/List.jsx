@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { backendUrl, currency } from "../App";
 import { toast } from "react-toastify";
 
-const List = ({token}) => {
+const List = ({ token }) => {
   const [list, setList] = useState([]);
 
   const fetchList = async () => {
@@ -20,7 +20,7 @@ const List = ({token}) => {
     }
   };
 
-  const removeProduct = async(id) => {
+  const removeProduct = async (id) => {
     try {
       const response = await axios.post(
         backendUrl + "/api/product/remove",
